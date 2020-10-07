@@ -11,6 +11,7 @@ public class Container extends JFrame{//codigo para tela
 		setTitle("Meu jogo");//nome da janela
 		setSize(1024,728);//tamanho da janela
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//funçao para fechar a janela
+		setLocationRelativeTo(null);
 		this.setResizable(false);//funçao vai inpredir usuario estica a tela
 		setVisible(true);//fu
 	}
