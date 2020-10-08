@@ -2,6 +2,8 @@ package meujogo.Modelo;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 //import java.awt.List;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -9,27 +11,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
-public class Player {
+public class Player implements ActionListener{
 	
 	private int x,y;
 	private int dx,dy;
 	private Image imagem;
 	private int altura,largura;
 	private List <Tiro> tiros;
-	private boolean isVisivel;
+	private boolean isVisivel,isTurbo;
+	private Timer timer;
 	
 	public Player() {
 		this.x = 100;
 		this.y = 100;
 		isVisivel = true;
+		isTurbo = false;
 		
 		tiros = new ArrayList<Tiro>();
+		timer = new Timer(5, this);
+		timer.start();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
 	}
 	
 	public void load() {
 		
-		ImageIcon referencia = new ImageIcon("res//PS3.jpg");
+		ImageIcon referencia = new ImageIcon("res//PS2.jpg");
 		imagem = referencia.getImage();
 		altura =  imagem.getHeight(null);
 		largura = imagem.getWidth(null);
@@ -42,6 +53,12 @@ public class Player {
 	
 	public void tiroSimples() {
 		this.tiros.add(new Tiro(x + largura,y + (altura / 2)));
+	}
+	
+	public void turbo() {
+		isTurbo = true;
+		ImageIcon referencia = new ImageIcon("res//PS2.jpg");
+		imagem = referencia.getImage();
 	}
 	
 	public Rectangle getBounds() {
@@ -117,5 +134,6 @@ public class Player {
 	public Image getImagem() {
 		return imagem;
 	}
+
 }
 ///VAI
